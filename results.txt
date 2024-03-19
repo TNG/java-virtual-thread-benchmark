@@ -1,0 +1,28 @@
+XPS 13 9310, i7-1195G7, 4C8T, 32GB RAM, Fedora 38, Amazon Corretto 21.0.2
+
+Benchmark                                     Mode  Cnt   Score    Error  Units
+DatabaseRequestBenchmark.withOSThread        thrpt   15  29.441 ±  0.451  ops/s
+DatabaseRequestBenchmark.withReactor         thrpt   15  61.496 ±  1.033  ops/s
+DatabaseRequestBenchmark.withVirtualThread   thrpt   15  51.363 ±  0.269  ops/s
+
+HibernateRequestBenchmark.withOSThread       thrpt   15  28.007 ±  0.193  ops/s
+HibernateRequestBenchmark.withVirtualThread  thrpt   15  45.871 ±  0.466  ops/s
+
+MockBlockingBenchmark.withOSThread           thrpt   15   0.200 ±  0.001  ops/s
+MockBlockingBenchmark.withReactor            thrpt   15   0.999 ±  0.001  ops/s
+MockBlockingBenchmark.withVirtualThread      thrpt   15   0.999 ±  0.001  ops/s
+
+MacBook Pro 16, M3 Max 14C, 36GB RAM, macOS 14.4, Amazon Corretto 21.0.2
+
+Benchmark                                     Mode  Cnt   Score    Error  Units
+DatabaseRequestBenchmark.withOSThread        thrpt   15  32.926 ±  0.420  ops/s
+DatabaseRequestBenchmark.withReactor         thrpt   15  88.997 ± 32.811  ops/s
+# 105 ops/s normal, with one iteration at 45 ops/s
+DatabaseRequestBenchmark.withVirtualThread   thrpt   15  36.593 ±  0.583  ops/s
+
+HibernateRequestBenchmark.withOSThread       thrpt   15  32.182 ±  0.305  ops/s
+HibernateRequestBenchmark.withVirtualThread  thrpt   15  35.393 ±  0.314  ops/s
+
+MockBlockingBenchmark.withOSThread           thrpt   15   0.198 ±  0.001  ops/s
+MockBlockingBenchmark.withReactor            thrpt   15   0.990 ±  0.001  ops/s
+MockBlockingBenchmark.withVirtualThread      thrpt   15   0.991 ±  0.001  ops/s
