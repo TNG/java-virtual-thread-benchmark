@@ -1,8 +1,11 @@
 Java Virtual Thread Benchmark
 ---
 
-This is a simple benchmark to compare the performance of Java Virtual Threads, Java Threads and Reactor Core,
-based on scenarios with jdbc and hibernate.
+A simple benchmark to compare the performance of Java Virtual Threads, Java Threads and Reactor Core,
+based on scenarios with jdbc and hibernate. 
+
+This is the support repo for the [Melbourne Java & JVM users group event](https://www.meetup.com/melbourne-java-jvm-users-group/events/299472731/).
+While this repository may not be actively maintained following the event, community contributions to further enhance or improve this benchmark are always welcome.
 
 ## How this benchmark works
 We benchmark the use cases with JMH, with 1000 concurrent requests to a class method that request a database through a connection pool.
@@ -37,3 +40,6 @@ Please see [results.txt](./results.txt)
     - HikariCP does not create extra threads for each request, although it uses some background threads to manage the pool, which is not replaced with virtual threads in this benchmark.
 - We use the default settings for the connection pool and R2DBC.
   - Connection pool size: 10
+
+## License
+This project is licensed under the Apache License 2.0. For more details, please see the [LICENSE](./LICENSE) file in this repository.
