@@ -13,9 +13,12 @@ public class ReactorDatabaseRequest {
     private static final ConnectionFactory connectionFactory = ConnectionFactories.get(DatabaseSetting.R2DBC_URL);
 
     public static Mono<Void> handleRequest(Consumer<Object> consumer) {
-        return Flux.usingWhen(connectionFactory.create(), Mono::just, Connection::close)
-            .flatMap(connection -> Flux.from(connection.createStatement("SELECT 1").execute()))
-            .flatMap(result -> result.map((row, metadata) -> row.get(0, Integer.class)))
+        return Flux.usingWhen(
+                connectionFactory.create(),
+                connection ->
+                    Flux.from(connection.createStatement("SELECT 1").execute())
+                        .flatMap(result -> result.map((row, metadata) -> row.get(0, Integer.class))),
+                Connection::close)
             .doOnNext(consumer)
             .then();
     }

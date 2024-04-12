@@ -98,18 +98,20 @@ UDPRequestBenchmark.withVirtualThread          thrpt   15  203.488 ± 30.678  op
 ## MacBook Pro 16, M3 Max 14C, 36GB RAM, macOS 14.4, Amazon Corretto 21.0.2
 DB Deployed in Docker on the same device (VM)
 
-Benchmark                                     Mode  Cnt   Score    Error  Units
-DatabaseRequestBenchmark.withOSThread        thrpt   15  32.926 ±  0.420  ops/s
-DatabaseRequestBenchmark.withReactor         thrpt   15  88.997 ± 32.811  ops/s
-// 105 ops/s normal, with one iteration at 45 ops/s
-DatabaseRequestBenchmark.withVirtualThread   thrpt   15  36.593 ±  0.583  ops/s
+Benchmark                                       Mode  Cnt    Score    Error  Units
+DatabaseRequestBenchmark.withOSThread          thrpt   15   28.496 ±  0.265  ops/s
+DatabaseRequestBenchmark.withOSThreadNoLimit   thrpt   15   28.379 ±  0.545  ops/s
+DatabaseRequestBenchmark.withReactor           thrpt   15   33.017 ±  0.128  ops/s
+DatabaseRequestBenchmark.withVirtualThread     thrpt   15   31.121 ±  0.240  ops/s
 
-HibernateRequestBenchmark.withOSThread       thrpt   15  32.182 ±  0.305  ops/s
-HibernateRequestBenchmark.withVirtualThread  thrpt   15  35.393 ±  0.314  ops/s
+HibernateRequestBenchmark.withOSThread         thrpt   15   27.599 ±  0.193  ops/s
+HibernateRequestBenchmark.withOSThreadNoLimit  thrpt   15   27.577 ±  0.361  ops/s
+HibernateRequestBenchmark.withVirtualThread    thrpt   15   30.038 ±  0.122  ops/s
 
-MockBlockingBenchmark.withOSThread           thrpt   15   0.198 ±  0.001  ops/s
-MockBlockingBenchmark.withReactor            thrpt   15   0.990 ±  0.001  ops/s
-MockBlockingBenchmark.withVirtualThread      thrpt   15   0.991 ±  0.001  ops/s
+MockBlockingBenchmark.withOSThread             thrpt   15    0.198 ±  0.001  ops/s
+MockBlockingBenchmark.withReactor              thrpt   15    0.990 ±  0.001  ops/s
+MockBlockingBenchmark.withVirtualThread        thrpt   15    0.992 ±  0.001  ops/s
 
-UDPRequestBenchmark.withOSThread             thrpt   15  122.751 ± 2.692  ops/s
-UDPRequestBenchmark.withVirtualThread        thrpt   15  428.106 ± 8.956  ops/s
+UDPRequestBenchmark.withOSThread               thrpt   15   95.197 ±  2.051  ops/s
+UDPRequestBenchmark.withOSThreadNoLimit        thrpt   15   70.348 ±  1.182  ops/s
+UDPRequestBenchmark.withVirtualThread          thrpt   15  376.784 ±  7.889  ops/s
