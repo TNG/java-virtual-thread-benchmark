@@ -26,7 +26,7 @@ This scenario is mainly used to test the throughput of the different approaches.
     ```
 
 ## Results
-Please see [results.txt](./results.txt)
+Please see [results.md](./results.md)
 
 ## Benchmark details
 - For OS threads and virtual threads, we use the same code (`MockBlockingRequest`, `DatabaseRequest`, `HibernateRequest`), with different
