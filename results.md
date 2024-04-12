@@ -13,8 +13,49 @@ MockBlockingBenchmark.withOSThread           thrpt   15   0.200 ±  0.001  ops/s
 MockBlockingBenchmark.withReactor            thrpt   15   0.999 ±  0.001  ops/s
 MockBlockingBenchmark.withVirtualThread      thrpt   15   0.999 ±  0.001  ops/s
 
+## AWS EC2 c5.2xlarge, 8vCPU, 16GB RAM, Amazon Linux 2, Amazon Corretto 21.0.2
+DB Deployed in Docker on the same machine
+
+Benchmark                                       Mode  Cnt    Score    Error  Units
+DatabaseRequestBenchmark.withOSThread          thrpt   15   24.625 ±  0.095  ops/s
+DatabaseRequestBenchmark.withOSThreadNoLimit   thrpt   15   33.309 ±  0.220  ops/s
+DatabaseRequestBenchmark.withReactor           thrpt   15   58.495 ±  0.865  ops/s
+DatabaseRequestBenchmark.withVirtualThread     thrpt   15   40.779 ±  0.209  ops/s
+
+HibernateRequestBenchmark.withOSThread         thrpt   15   22.561 ±  0.122  ops/s
+HibernateRequestBenchmark.withOSThreadNoLimit  thrpt   15   30.601 ±  0.183  ops/s
+HibernateRequestBenchmark.withVirtualThread    thrpt   15   36.528 ±  0.164  ops/s
+
+MockBlockingBenchmark.withOSThread             thrpt   15    0.199 ±  0.001  ops/s
+MockBlockingBenchmark.withReactor              thrpt   15    0.999 ±  0.001  ops/s
+MockBlockingBenchmark.withVirtualThread        thrpt   15    0.998 ±  0.001  ops/s
+
+UDPRequestBenchmark.withOSThread               thrpt   15   45.480 ±  0.755  ops/s
+UDPRequestBenchmark.withOSThreadNoLimit        thrpt   15   62.574 ±  0.165  ops/s
+UDPRequestBenchmark.withVirtualThread          thrpt   15  248.778 ± 14.361  ops/s
+
+## AWS EC2 c5.2xlarge, 8vCPU, 16GB RAM, Amazon Linux 2, Amazon Corretto 21.0.2
+DB Deployed in EC2 r5.large 2vCPU, 16GB RAM, Amazon Linux 2
+
+Benchmark                                       Mode  Cnt    Score    Error  Units
+DatabaseRequestBenchmark.withOSThread          thrpt   15   23.283 ±  0.092  ops/s
+DatabaseRequestBenchmark.withOSThreadNoLimit   thrpt   15   26.749 ±  0.066  ops/s
+DatabaseRequestBenchmark.withReactor           thrpt   15   48.539 ±  1.196  ops/s
+DatabaseRequestBenchmark.withVirtualThread     thrpt   15   28.750 ±  0.182  ops/s
+
+HibernateRequestBenchmark.withOSThread         thrpt   15   23.478 ±  0.109  ops/s
+HibernateRequestBenchmark.withOSThreadNoLimit  thrpt   15   27.811 ±  0.104  ops/s
+HibernateRequestBenchmark.withVirtualThread    thrpt   15   30.136 ±  0.418  ops/s
+
+MockBlockingBenchmark.withOSThread             thrpt   15    0.199 ±  0.001  ops/s
+MockBlockingBenchmark.withReactor              thrpt   15    0.999 ±  0.001  ops/s
+MockBlockingBenchmark.withVirtualThread        thrpt   15    0.998 ±  0.001  ops/s
+
+UDPRequestBenchmark.withOSThread               thrpt   15   45.713 ±  0.389  ops/s
+UDPRequestBenchmark.withOSThreadNoLimit        thrpt   15   62.586 ±  0.443  ops/s
+UDPRequestBenchmark.withVirtualThread          thrpt   15  258.100 ±  9.146  ops/s
+
 ## AWS EC2 c5.xlarge, 4vCPU, 8GB RAM, Amazon Linux 2, Amazon Corretto 21.0.2
-HVM
 DB Deployed in Docker on the same machine
 
 Benchmark                                       Mode  Cnt    Score    Error  Units
@@ -34,7 +75,6 @@ UDPRequestBenchmark.withVirtualThread          thrpt   15  209.680 ± 40.358  op
 
 
 ## AWS EC2 c5.xlarge, 4vCPU, 8GB RAM, Amazon Linux 2, Amazon Corretto 21.0.2
-HVM
 DB Deployed in EC2 r5.large 2vCPU, 16GB RAM, Amazon Linux 2
 
 Benchmark                                       Mode  Cnt    Score    Error  Units
