@@ -27,6 +27,12 @@ public class HibernateRequestBenchmark {
     }
 
     @Benchmark
+    public void withOSThreadNoLimit(Blackhole blackhole) throws InterruptedException {
+        try (var executor = Executors.newCachedThreadPool()) {
+            HibernateRequest.runOnExecutor(executor, COUNT, blackhole::consume);
+        }
+    }
+    @Benchmark
     public void withVirtualThread(Blackhole blackhole) throws InterruptedException {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             HibernateRequest.runOnExecutor(executor, COUNT, blackhole::consume);

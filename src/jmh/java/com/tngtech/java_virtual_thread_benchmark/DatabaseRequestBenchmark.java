@@ -19,6 +19,13 @@ public class DatabaseRequestBenchmark {
     }
 
     @Benchmark
+    public void withOSThreadNoLimit(Blackhole blackhole) throws InterruptedException {
+        try (var executor = Executors.newCachedThreadPool()) {
+            DatabaseRequest.runOnExecutor(executor, COUNT, blackhole::consume);
+        }
+    }
+
+    @Benchmark
     public void withVirtualThread(Blackhole blackhole) throws InterruptedException {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             DatabaseRequest.runOnExecutor(executor, COUNT, blackhole::consume);

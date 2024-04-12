@@ -17,6 +17,13 @@ public class UDPRequestBenchmark {
     }
 
     @Benchmark
+    public void withOSThreadNoLimit() throws InterruptedException, SocketException {
+        try (var executor = Executors.newCachedThreadPool()) {
+            UDPRequest.runOnExecutor(executor, COUNT);
+        }
+    }
+
+    @Benchmark
     public void withVirtualThread() throws InterruptedException, SocketException {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             UDPRequest.runOnExecutor(executor, COUNT);
