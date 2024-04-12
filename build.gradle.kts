@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     id("java")
     id("me.champeau.jmh") version "0.7.2"
@@ -10,7 +12,7 @@ jmh {
 
     jvmArgs.add("-Djava.util.logging.config.file=src/main/resources/logging.properties")
 
-//    includes = listOf("HibernateRequestBenchmark")
+    includes = listOf("UDPRequestBenchmark.withReactorCore")
 }
 
 group = "com.tngtech"
@@ -37,6 +39,11 @@ dependencies {
     implementation("org.openjdk.jmh:jmh-generator-annprocess:1.33")
 
     implementation("io.projectreactor:reactor-core:3.4.10")
+    implementation("io.projectreactor.netty:reactor-netty:1.1.18")
+
+    if (Os.isFamily(Os.FAMILY_MAC)) {
+        implementation("io.netty:netty-all:4.1.108.Final")
+    }
 
     implementation("io.r2dbc:r2dbc-spi:1.0.0.RELEASE")
     implementation("io.r2dbc:r2dbc-pool:1.0.1.RELEASE")

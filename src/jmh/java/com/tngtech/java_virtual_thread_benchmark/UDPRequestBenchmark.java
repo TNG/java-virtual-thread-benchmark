@@ -1,6 +1,8 @@
 package com.tngtech.java_virtual_thread_benchmark;
 
 import org.openjdk.jmh.annotations.Benchmark;
+import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 
 import java.net.SocketException;
 import java.util.concurrent.Executors;
@@ -28,5 +30,13 @@ public class UDPRequestBenchmark {
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             UDPRequest.runOnExecutor(executor, COUNT);
         }
+    }
+
+    @Benchmark
+    public void withReactorCore() {
+        Flux.range(1, COUNT)
+            .publishOn(Schedulers.boundedElastic())
+            .flatMap(i -> ReactorUdpRequest.handleRequest())
+            .blockLast();
     }
 }
