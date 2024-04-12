@@ -26,3 +26,6 @@ HibernateRequestBenchmark.withVirtualThread  thrpt   15  35.393 ±  0.314  ops/s
 MockBlockingBenchmark.withOSThread           thrpt   15   0.198 ±  0.001  ops/s
 MockBlockingBenchmark.withReactor            thrpt   15   0.990 ±  0.001  ops/s
 MockBlockingBenchmark.withVirtualThread      thrpt   15   0.991 ±  0.001  ops/s
+
+UDPRequestBenchmark.withOSThread             thrpt   15  122.751 ± 2.692  ops/s
+UDPRequestBenchmark.withVirtualThread        thrpt   15  428.106 ± 8.956  ops/s
