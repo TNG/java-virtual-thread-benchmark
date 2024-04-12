@@ -42,9 +42,9 @@ public class DatabaseRequest implements Runnable {
     private static HikariDataSource ds = new HikariDataSource();
 
     static {
-        ds.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
-        ds.setUsername("postgres");
-        ds.setPassword("postgres");
+        ds.setJdbcUrl(DatabaseSetting.JDBC_URL);
+        ds.setUsername(DatabaseSetting.JDBC_USER);
+        ds.setPassword(DatabaseSetting.JDBC_PASSWORD);
     }
 
     public static void main(String[] args) {

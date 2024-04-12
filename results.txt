@@ -1,4 +1,5 @@
 XPS 13 9310, i7-1195G7, 4C8T, 32GB RAM, Fedora 38, Amazon Corretto 21.0.2
+DB Deployed in Docker on the same machine
 
 Benchmark                                     Mode  Cnt   Score    Error  Units
 DatabaseRequestBenchmark.withOSThread        thrpt   15  29.441 ±  0.451  ops/s
@@ -13,6 +14,7 @@ MockBlockingBenchmark.withReactor            thrpt   15   0.999 ±  0.001  ops/s
 MockBlockingBenchmark.withVirtualThread      thrpt   15   0.999 ±  0.001  ops/s
 
 MacBook Pro 16, M3 Max 14C, 36GB RAM, macOS 14.4, Amazon Corretto 21.0.2
+DB Deployed in Docker on AWS, r5.large
 
 Benchmark                                     Mode  Cnt   Score    Error  Units
 DatabaseRequestBenchmark.withOSThread        thrpt   15  32.926 ±  0.420  ops/s

@@ -18,12 +18,8 @@ This scenario is mainly used to test the throughput of the different approaches.
 1. Make sure following denendencies are installed:
     - Java 21
     - Docker
-    - Docker Compose
-2. Create a `data` folder on the root of the project
-3. Run the following command to start the database:
-    ```bash
-    docker-compose up
-    ```
+3. Run the script `start-db.sh` to start the database.
+4. Optional: if you run the database on other devices, configure the settings in `DatabaseSetting.java`.
 4. Run the following command to run the benchmark:
     ```bash
     ./gradlew jmh

@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 public class ReactorDatabaseRequest {
 
-    private static final ConnectionFactory connectionFactory = ConnectionFactories.get("r2dbc:pool:postgresql://postgres:postgres@localhost:5432/postgres");
+    private static final ConnectionFactory connectionFactory = ConnectionFactories.get(DatabaseSetting.R2DBC_URL);
 
     public static Mono<Void> handleRequest(Consumer<Object> consumer) {
         return Flux.usingWhen(connectionFactory.create(), Mono::just, Connection::close)

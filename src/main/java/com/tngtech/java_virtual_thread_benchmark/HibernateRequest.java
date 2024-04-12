@@ -22,9 +22,9 @@ public class HibernateRequest implements Runnable {
         var configuration = new Configuration();
         configuration.setProperty("hibernate.connection.provider_class", "org.hibernate.hikaricp.internal.HikariCPConnectionProvider");
         configuration.setProperty("hibernate.hikari.dataSourceClassName", "org.postgresql.ds.PGSimpleDataSource");
-        configuration.setProperty("hibernate.hikari.dataSource.url", "jdbc:postgresql://localhost:5432/postgres");
-        configuration.setProperty("hibernate.hikari.dataSource.user", "postgres");
-        configuration.setProperty("hibernate.hikari.dataSource.password", "postgres");
+        configuration.setProperty("hibernate.hikari.dataSource.url", DatabaseSetting.JDBC_URL);
+        configuration.setProperty("hibernate.hikari.dataSource.user", DatabaseSetting.JDBC_USER);
+        configuration.setProperty("hibernate.hikari.dataSource.password", DatabaseSetting.JDBC_PASSWORD);
 
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
 
