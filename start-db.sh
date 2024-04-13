@@ -6,4 +6,4 @@ docker run --name demo-postgres \
   -e POSTGRES_DB=postgres \
   -p 5432:5432 \
   -v /var/lib/postgresql/data \
-  -d postgres:9.6
+  -d postgres:16.2

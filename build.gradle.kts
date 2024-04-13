@@ -12,7 +12,7 @@ jmh {
 
     jvmArgs.add("-Djava.util.logging.config.file=src/main/resources/logging.properties")
 
-    includes = listOf("UDPRequestBenchmark.withReactorCore")
+    includes = listOf("UDPRequestBenchmark")
 }
 
 group = "com.tngtech"
