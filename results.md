@@ -81,3 +81,16 @@ MockBlockingBenchmark.withVirtualThread        thrpt   15    0.992 ±  0.001  op
 UDPRequestBenchmark.withOSThread               thrpt   15   95.197 ±  2.051  ops/s
 UDPRequestBenchmark.withOSThreadNoLimit        thrpt   15   70.348 ±  1.182  ops/s
 UDPRequestBenchmark.withVirtualThread          thrpt   15  376.784 ±  7.889  ops/s
+
+## MacBook Pro 16, M3 Max 14C, 36GB RAM, macOS 14.4, Amazon Corretto 21.0.2
+10000 concurrent requests
+
+Benchmark                                      Mode  Cnt  Score   Error  Units
+DatabaseRequestBenchmark.withOSThread         thrpt   15  8.411 ± 0.069  ops/s
+DatabaseRequestBenchmark.withOSThreadNoLimit  thrpt   15  4.097 ± 0.117  ops/s
+DatabaseRequestBenchmark.withReactor          thrpt   15  9.179 ± 0.057  ops/s
+DatabaseRequestBenchmark.withVirtualThread    thrpt   15  8.282 ± 0.098  ops/s
+
+HibernateRequestBenchmark.withOSThread         thrpt   15  7.922 ± 0.146  ops/s
+HibernateRequestBenchmark.withOSThreadNoLimit  thrpt   15  3.926 ± 0.098  ops/s
+HibernateRequestBenchmark.withVirtualThread    thrpt   15  7.973 ± 0.077  ops/s
