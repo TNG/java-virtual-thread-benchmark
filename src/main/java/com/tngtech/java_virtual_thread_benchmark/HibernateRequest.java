@@ -1,10 +1,14 @@
 package com.tngtech.java_virtual_thread_benchmark;
 
+import lombok.SneakyThrows;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
@@ -53,14 +57,17 @@ public class HibernateRequest implements Runnable {
         }
     }
 
-    public static void runOnExecutor(ExecutorService threadPool, long count, Consumer<Object> consumer) throws InterruptedException {
+    @SneakyThrows
+    public static void runOnExecutor(ExecutorService threadPool, int count, Consumer<Object> consumer) throws InterruptedException {
+        var futures = new ArrayList<Future>(count);
+
         for (int i = 0; i < count; i++) {
-            threadPool.submit(new HibernateRequest(consumer));
+            var future = threadPool.submit(new HibernateRequest(consumer));
+            futures.add(future);
         }
 
-        threadPool.shutdown();
-        if (!threadPool.awaitTermination(1, TimeUnit.DAYS)) {
-            throw new RuntimeException("Timeout");
+        for (Future future : futures) {
+            future.get();
         }
     }
 

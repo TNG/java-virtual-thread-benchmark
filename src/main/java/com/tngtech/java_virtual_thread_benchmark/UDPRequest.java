@@ -2,19 +2,28 @@ package com.tngtech.java_virtual_thread_benchmark;
 
 import lombok.SneakyThrows;
 
-import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class UDPRequest implements Runnable {
 
-    public static void runOnExecutor(ExecutorService threadPool, long count) throws InterruptedException, SocketException {
+    @SneakyThrows
+    public static void runOnExecutor(ExecutorService threadPool, int count) throws InterruptedException, SocketException {
         try (DatagramSocket socket = new DatagramSocket()) {
+            var futures = new ArrayList<Future>(count);
+
             for (int i = 0; i < count; i++) {
-                threadPool.submit(new UDPRequest(socket));
+                var future = threadPool.submit(new UDPRequest(socket));
+                futures.add(future);
+            }
+
+            for (Future future : futures) {
+                future.get();
             }
         }
     }

@@ -1,12 +1,16 @@
 package com.tngtech.java_virtual_thread_benchmark;
 
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.SneakyThrows;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 import java.util.function.Consumer;
 
 public class DatabaseRequest implements Runnable {
@@ -16,13 +20,18 @@ public class DatabaseRequest implements Runnable {
         this.consumer = consumer;
     }
 
-    public static void runOnExecutor(ExecutorService threadPool, long count, Consumer<Object> consumer) throws InterruptedException {
+    @SneakyThrows
+    public static void runOnExecutor(ExecutorService threadPool, int count, Consumer<Object> consumer) throws InterruptedException {
+        var futures = new ArrayList<Future>(count);
+
         for (int i = 0; i < count; i++) {
-            threadPool.submit(new DatabaseRequest(consumer));
+            var future = threadPool.submit(new DatabaseRequest(consumer));
+            futures.add(future);
         }
 
-        threadPool.shutdown();
-        threadPool.awaitTermination(1, java.util.concurrent.TimeUnit.DAYS);
+        for (Future future : futures) {
+            future.get();
+        }
     }
 
     @Override
@@ -45,9 +54,5 @@ public class DatabaseRequest implements Runnable {
         ds.setJdbcUrl(DatabaseSetting.JDBC_URL);
         ds.setUsername(DatabaseSetting.JDBC_USER);
         ds.setPassword(DatabaseSetting.JDBC_PASSWORD);
-    }
-
-    public static void main(String[] args) {
-        new DatabaseRequest(System.out::println).run();
     }
 }
